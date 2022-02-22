@@ -1,37 +1,39 @@
-## Welcome to GitHub Pages
+# BYOA - Real-Time Database
 
-You can use the [editor on GitHub](https://github.com/Stateful-Academy/BYOA_Firebase/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+In this project, you will use your knowledge of Swift, Networking, and Firebase’s Real-Time Database to build an app of your choosing! Building apps on your own will not only strengthen your skills but also allow you better learn your strengths.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Students who complete this project independently or as a pairing will showcase their understanding of the following principles:
 
-### Markdown
+* Basic Storyboard constraints
+* Constants, Variables, and Basic Data Types
+* Collections
+* Functions
+* Control Flow
+* IBActions && IBOutlets
+* Firebase Real-Time Database
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+---
 
-```markdown
-Syntax highlighted code block
+## Requirements:
+Your completed app must:
 
-# Header 1
-## Header 2
-### Header 3
+* Create data within the app and sync to Firebase RTDB
+* Fetch data from Firebase RTDB
+* Your `model` should contain at least `three` separate data types.
+  * String
+  * Date
+  * Int
+* The app should be built with `MVVM` architecture
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
+You got this!
 
-**Bold** and _Italic_ and `Code` text
+---
 
-[Link](url) and ![Image](src)
-```
+## Design
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+The design of your app is entirely up to you! Do want to have a list view that displays the data? Maybe you want the user to have the option to navigate to a detail screen to see additional information? It's all up to you!
 
-### Jekyll Themes
+Feel free to reference any past project for inspiration and syntax support.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Stateful-Academy/BYOA_Firebase/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+---
