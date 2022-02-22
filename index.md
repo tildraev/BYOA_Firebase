@@ -22,7 +22,7 @@ Your completed app must:
 * Your `model` should contain at least `three` separate data types.
   * String
   * Date
-  * Int
+  * Images
 * The app should be built with `MVVM` architecture
 * Two views
   * Can be a single view if the design is `amazing`  
