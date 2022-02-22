@@ -24,6 +24,8 @@ Your completed app must:
   * Date
   * Int
 * The app should be built with `MVVM` architecture
+* Two views
+  * Can be a single view if the design is `amazing`  
 
 
 You got this!
