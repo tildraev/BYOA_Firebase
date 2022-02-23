@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="4jb-Pw-1YD">
-                                <rect key="frame" x="5" y="165" width="404" height="216"/>
+                                <rect key="frame" x="47" y="165" width="320" height="216"/>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where'd you go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0X-0U-eqt">
                                 <rect key="frame" x="5" y="49" width="404" height="21"/>
@@ -31,13 +31,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOZ-zB-Tqt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOZ-zB-Tqt">
                                 <rect key="frame" x="5" y="134" width="404" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us about it!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGh-Ww-OcV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us about it!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGh-Ww-OcV">
                                 <rect key="frame" x="5" y="401" width="404" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -87,6 +87,9 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Upload Pix"/>
+                                <connections>
+                                    <action selector="uploadPixButtonTapped:" destination="Jjj-DL-pAx" eventType="touchUpInside" id="eat-2c-dE6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Nl-MT-GMH">
                                 <rect key="frame" x="157" y="836" width="100" height="31"/>
@@ -132,9 +135,7 @@
                             <constraint firstItem="VsA-38-7gZ" firstAttribute="top" secondItem="mGh-Ww-OcV" secondAttribute="bottom" constant="10" id="eQ6-p8-ptc"/>
                             <constraint firstItem="IOZ-zB-Tqt" firstAttribute="centerX" secondItem="ldQ-5D-Wgb" secondAttribute="centerX" id="epb-Rq-Bam"/>
                             <constraint firstItem="IOZ-zB-Tqt" firstAttribute="leading" secondItem="IyT-B6-zJH" secondAttribute="leading" constant="5" id="f9f-h2-SU3"/>
-                            <constraint firstItem="4jb-Pw-1YD" firstAttribute="leading" secondItem="IyT-B6-zJH" secondAttribute="leading" constant="5" id="gls-j5-Znw"/>
                             <constraint firstItem="mGh-Ww-OcV" firstAttribute="leading" secondItem="IyT-B6-zJH" secondAttribute="leading" constant="5" id="j4q-Ao-cgP"/>
-                            <constraint firstItem="IyT-B6-zJH" firstAttribute="trailing" secondItem="4jb-Pw-1YD" secondAttribute="trailing" constant="5" id="lch-lg-CQx"/>
                             <constraint firstItem="IyT-B6-zJH" firstAttribute="trailing" secondItem="ruu-4B-POE" secondAttribute="trailing" constant="5" id="mON-PU-zdc"/>
                             <constraint firstItem="IyT-B6-zJH" firstAttribute="trailing" secondItem="VsA-38-7gZ" secondAttribute="trailing" constant="5" id="mh4-En-go1"/>
                             <constraint firstItem="npl-n2-GiK" firstAttribute="top" secondItem="VsA-38-7gZ" secondAttribute="bottom" constant="20" id="oDd-az-luX"/>

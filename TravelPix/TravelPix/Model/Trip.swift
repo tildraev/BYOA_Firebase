@@ -8,23 +8,6 @@
 import Foundation
 import UIKit
 
-//class TripDiary {
-//    enum Key {
-//        static let trips = "trips"
-//    }
-//    
-//    var trips: [Trip]
-//    
-//    var tripDiaryData: [String:Any] {
-//        [Key.trips : self.trips]
-//    }
-//    
-//    init(trips: [Trip]) {
-//        self.trips = trips
-//    }
-//}
-//
-
 class Trip {
     enum Key {
         static let name = "name"
@@ -54,6 +37,20 @@ class Trip {
         self.date = date
         self.uuid = uuid
         self.pictures = pictures
+    }
+    
+    init?(dictionary: [String:Any]) {
+        guard let name = dictionary["name"] as? String,
+              let description = dictionary["description"] as? String,
+              let date = dictionary["date"] as? Double,
+              let uuid = dictionary["uuid"] as? String else { return nil }
+              //let pictures = dictionary["pictures"] as? [UIImage]
+        
+        self.name = name
+        self.description = description
+        self.date = date
+        self.uuid = uuid
+        self.pictures = []
     }
     
     

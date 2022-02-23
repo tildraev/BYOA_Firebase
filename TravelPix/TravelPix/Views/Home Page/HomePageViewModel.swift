@@ -9,13 +9,18 @@ import Foundation
 import UIKit
 import Firebase
 
+protocol HomePageViewModelDelegate: HomePageViewController {
+    func updateTableView()
+}
+
 class HomePageViewModel {
     var tripDiary: [Trip]?
     var userID: String?
+    weak var delegate: HomePageViewModelDelegate?
     
     init(userID: String) {
         self.userID = userID
-        getTrips()
+        self.getTrips()
     }
     
     func createTrip(name: String, description: String, date: Double, pictures: [UIImage]) {
@@ -47,14 +52,26 @@ class HomePageViewModel {
     }
     
     func deleteTrip(trip: Trip, userID: String) {
-//        guard let firstIndex = tripDiary?.trips.firstIndex(where: { $0 == trip }) else { return }
-//        tripDiary?.trips.remove(at: firstIndex)
+        guard let firstIndex = tripDiary?.firstIndex(where: { $0 == trip }) else { return }
+        tripDiary?.remove(at: firstIndex)
         
         FirebaseController().deleteTrip(trip, userID: userID)
     }
     
     func getTrips() {
-        //Insert code to GET trip data from firebase
-        //self.tripDiary =
+        guard let userID = userID else {
+            return
+        }
+
+        FirebaseController().getTrips(userID: userID) { result in
+            switch result {
+                
+            case .success(let result):
+                self.tripDiary = result
+                self.delegate?.updateTableView()
+            case .failure(let error):
+                print(error.description)
+            }
+        }
     }
 }

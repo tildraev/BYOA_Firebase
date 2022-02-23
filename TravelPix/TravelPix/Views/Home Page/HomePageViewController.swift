@@ -11,9 +11,14 @@ import Firebase
 class HomePageViewController: UIViewController {
 
     var viewModel: HomePageViewModel!
+    @IBOutlet weak var tripTableView: UITableView!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.delegate = self
+        tripTableView.delegate = self
+        tripTableView.dataSource = self
     }
     
 
@@ -39,14 +44,13 @@ class HomePageViewController: UIViewController {
 
 extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return viewModel. .tripDiary?.trips.count ?? 0
-        return 0
+        return viewModel.tripDiary?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tripCell", for: indexPath)
 
-//        cell.textLabel?.text = viewModel.tripDiary?.trips[indexPath.row].name
+        cell.textLabel?.text = viewModel.tripDiary?[indexPath.row].name
 
         return cell
     }
@@ -56,6 +60,14 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
             guard let trip = viewModel.tripDiary?[indexPath.row] else { return }
             viewModel.deleteTrip(trip: trip, userID: viewModel.userID!)
             tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+}
+
+extension HomePageViewController: HomePageViewModelDelegate {
+    func updateTableView() {
+        DispatchQueue.main.async {
+            self.tripTableView.reloadData()
         }
     }
 }
