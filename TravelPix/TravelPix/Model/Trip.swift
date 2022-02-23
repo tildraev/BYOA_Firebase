@@ -21,7 +21,7 @@ class Trip {
     var description: String
     var date: Double
     var uuid: String
-    var pictures: [UIImage]
+    var pictures: [String]
     
     var tripData: [String:Any] {
         [Key.name           : self.name,
@@ -31,7 +31,7 @@ class Trip {
          Key.pictures       : self.pictures]
     }
     
-    init(name: String, description: String, date: Double, uuid: String = UUID().uuidString, pictures: [UIImage] = []) {
+    init(name: String, description: String, date: Double, uuid: String = UUID().uuidString, pictures: [String] = []) {
         self.name = name
         self.description = description
         self.date = date
@@ -43,17 +43,15 @@ class Trip {
         guard let name = dictionary["name"] as? String,
               let description = dictionary["description"] as? String,
               let date = dictionary["date"] as? Double,
-              let uuid = dictionary["uuid"] as? String else { return nil }
-              //let pictures = dictionary["pictures"] as? [UIImage]
+              let uuid = dictionary["uuid"] as? String,
+              let pictures = dictionary["pictures"] as? [String] else { return nil }
         
         self.name = name
         self.description = description
         self.date = date
         self.uuid = uuid
-        self.pictures = []
+        self.pictures = pictures
     }
-    
-    
 }
 
 extension Trip: Equatable {

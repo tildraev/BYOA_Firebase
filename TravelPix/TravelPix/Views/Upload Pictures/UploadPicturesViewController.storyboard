@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cjY-iP-8eh">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Upload Pictures View Controller-->
+        <scene sceneID="1JE-Iq-No8">
+            <objects>
+                <viewController storyboardIdentifier="UploadPicturesViewModel" id="cjY-iP-8eh" customClass="UploadPicturesViewController" customModule="TravelPix" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ecx-Zc-cwn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vus-W7-gks">
+                                <rect key="frame" x="160" y="49" width="94" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Upload Pix"/>
+                                <connections>
+                                    <action selector="uploadPixButtonTapped:" destination="cjY-iP-8eh" eventType="touchUpInside" id="A0f-Rt-cNp"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kla-rQ-gLe">
+                                <rect key="frame" x="10" y="90" width="394" height="731"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tWR-Xi-kAb">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="picCell" id="xck-8N-75L" customClass="CollectionViewCell" customModule="TravelPix" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DNv-Y2-IFr">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="roU-Cg-90J" customClass="FirebaseImageView" customModule="TravelPix" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.5" width="128" height="126"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="roU-Cg-90J" secondAttribute="height" multiplier="1:1" id="9BX-ki-OtO"/>
+                                                        <constraint firstAttribute="width" constant="100" id="ma8-oU-YkA"/>
+                                                        <constraint firstAttribute="height" constant="100" id="uYv-wz-tUb"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="roU-Cg-90J" secondAttribute="bottom" id="8oO-kM-gVf"/>
+                                                <constraint firstItem="roU-Cg-90J" firstAttribute="leading" secondItem="DNv-Y2-IFr" secondAttribute="leading" id="LN5-4d-eoX"/>
+                                                <constraint firstItem="roU-Cg-90J" firstAttribute="top" secondItem="DNv-Y2-IFr" secondAttribute="top" id="gnD-Sg-52U"/>
+                                                <constraint firstAttribute="trailing" secondItem="roU-Cg-90J" secondAttribute="trailing" id="rG7-KI-Kwm"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="128" height="128"/>
+                                        <connections>
+                                            <outlet property="imageCell" destination="roU-Cg-90J" id="axj-1H-u1p"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Djq-EF-Bfc">
+                                <rect key="frame" x="177.5" y="831" width="59" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonTapped:" destination="cjY-iP-8eh" eventType="touchUpInside" id="SqI-Vy-Che"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bJq-zm-XAr"/>
+                        <color key="backgroundColor" red="0.30209305879999998" green="0.26122978330000002" blue="0.4013305902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kla-rQ-gLe" firstAttribute="top" secondItem="vus-W7-gks" secondAttribute="bottom" constant="10" id="5sg-bZ-dFe"/>
+                            <constraint firstItem="vus-W7-gks" firstAttribute="top" secondItem="bJq-zm-XAr" secondAttribute="top" constant="5" id="BYG-KT-omc"/>
+                            <constraint firstItem="kla-rQ-gLe" firstAttribute="leading" secondItem="bJq-zm-XAr" secondAttribute="leading" constant="10" id="FP2-ls-koT"/>
+                            <constraint firstItem="vus-W7-gks" firstAttribute="centerX" secondItem="ecx-Zc-cwn" secondAttribute="centerX" id="Vz9-2h-ASR"/>
+                            <constraint firstItem="Djq-EF-Bfc" firstAttribute="centerX" secondItem="ecx-Zc-cwn" secondAttribute="centerX" id="eEJ-5o-oKy"/>
+                            <constraint firstItem="bJq-zm-XAr" firstAttribute="trailing" secondItem="kla-rQ-gLe" secondAttribute="trailing" constant="10" id="jDn-Tc-w6J"/>
+                            <constraint firstItem="Djq-EF-Bfc" firstAttribute="bottom" secondItem="bJq-zm-XAr" secondAttribute="bottom" id="loZ-x9-Wea"/>
+                            <constraint firstItem="Djq-EF-Bfc" firstAttribute="top" secondItem="kla-rQ-gLe" secondAttribute="bottom" constant="10" id="yWU-GL-W4d"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageCollectionView" destination="kla-rQ-gLe" id="1eM-xN-jli"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J5D-xZ-nXH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6611.594202898551" y="148.66071428571428"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="camera" catalog="system" width="128" height="94"/>
+    </resources>
+</document>

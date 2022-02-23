@@ -15,6 +15,7 @@ protocol HomePageViewModelDelegate: HomePageViewController {
 
 class HomePageViewModel {
     var tripDiary: [Trip]?
+    var trip: Trip?
     var userID: String?
     weak var delegate: HomePageViewModelDelegate?
     
@@ -23,49 +24,31 @@ class HomePageViewModel {
         self.getTrips()
     }
     
-    func createTrip(name: String, description: String, date: Double, pictures: [UIImage]) {
+    func createTrip(name: String, description: String, date: Double, pictures: [String]) -> Trip {
         let newTrip = Trip(name: name, description: description, date: date, pictures: pictures)
         tripDiary?.append(newTrip)
         FirebaseController().save(newTrip, userID: userID!)
+        return newTrip
     }
     
-    func updateTrip(trip: Trip, name: String?, description: String?, date: Double?, pictures: [UIImage]?) {
-        if let name = name {
-            trip.name = name
-        }
-        
-        if let description = description {
-            trip.description = description
-        }
-        
-        if let date = date {
-            trip.date = date
-        }
-        
-        if let pictures = pictures {
-            trip.pictures = pictures
-        }
-        
-        if let userID = userID {
-            FirebaseController().save(trip, userID: userID)
-        }
+    func updateTrip(trip: Trip, name: String?, description: String?, date: Double?, pictures: [String]?) {
+        if let name = name { trip.name = name }
+        if let description = description { trip.description = description }
+        if let date = date { trip.date = date }
+        if let pictures = pictures { trip.pictures = pictures }
+        if let userID = userID { FirebaseController().save(trip, userID: userID) }
     }
     
     func deleteTrip(trip: Trip, userID: String) {
         guard let firstIndex = tripDiary?.firstIndex(where: { $0 == trip }) else { return }
         tripDiary?.remove(at: firstIndex)
-        
         FirebaseController().deleteTrip(trip, userID: userID)
     }
     
     func getTrips() {
-        guard let userID = userID else {
-            return
-        }
-
+        guard let userID = userID else { return }
         FirebaseController().getTrips(userID: userID) { result in
             switch result {
-                
             case .success(let result):
                 self.tripDiary = result
                 self.delegate?.updateTableView()
@@ -73,5 +56,10 @@ class HomePageViewModel {
                 print(error.description)
             }
         }
+    }
+    
+    func uploadPicture(imagePath: URL, tripName: String) {
+        guard let userID = userID else { return }
+        FirebaseController().uploadImage(userID: userID, imagePath: imagePath, tripName: tripName)
     }
 }

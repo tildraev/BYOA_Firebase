@@ -9,11 +9,11 @@ import UIKit
 import Firebase
 
 class HomePageViewController: UIViewController {
-
+    
     var viewModel: HomePageViewModel!
     @IBOutlet weak var tripTableView: UITableView!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
@@ -21,7 +21,7 @@ class HomePageViewController: UIViewController {
         tripTableView.dataSource = self
     }
     
-
+    
     @IBAction func signOutButtonTapped(_ sender: Any) {
         do {
             try Auth.auth().signOut()
@@ -37,6 +37,14 @@ class HomePageViewController: UIViewController {
         if segue.identifier == "toNewTripVC" {
             if let destination = segue.destination as? NewTripViewController {
                 destination.viewModel = viewModel
+                
+            }
+        } else if segue.identifier == "toViewTripVC" {
+            if let destination = segue.destination as? ViewTripViewController {
+                if let index = tripTableView.indexPathForSelectedRow {
+                    viewModel.trip = viewModel.tripDiary?[index.row]
+                    destination.viewModel = viewModel
+                }
             }
         }
     }
@@ -49,9 +57,7 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tripCell", for: indexPath)
-
         cell.textLabel?.text = viewModel.tripDiary?[indexPath.row].name
-
         return cell
     }
     

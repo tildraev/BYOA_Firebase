@@ -7,39 +7,50 @@
 
 import UIKit
 
-class NewTripViewController: UIViewController {
+class NewTripViewController: UIViewController, UINavigationControllerDelegate {
 
     var viewModel: HomePageViewModel!
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var tripNameTextField: UITextField!
     @IBOutlet weak var tripDescriptionTextView: UITextView!
-    @IBOutlet weak var uploadPicturesButton: UIButton!
-    @IBOutlet weak var pictureCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    
-    @IBAction func uploadPixButtonTapped(_ sender: Any) {
-        // Present image picker and upload pic to cloud
-        // FirebaseController().upload a pic
-        //let imagePicker = UIImagePickerController()
-    }
-    
+
     @IBAction func saveTripButtonTapped(_ sender: Any) {
-        guard let name = tripNameTextField.text, !name.isEmpty,
-              let description = tripDescriptionTextView.text, !description.isEmpty
-               else { return }
-        
-        let date = datePicker.date
-        let pictures = [UIImage]()
-        
-        viewModel.createTrip(name: name, description: description, date: date.timeIntervalSince1970, pictures: pictures)
-        
-        viewModel.delegate?.updateTableView()
-        navigationController?.popViewController(animated: true)
+        if let name = tripNameTextField.text, !name.isEmpty,
+           let description = tripDescriptionTextView.text, !description.isEmpty {
+            
+            let date = datePicker.date
+            let pictures = [String]()
+            let trip = viewModel.createTrip(name: name, description: description, date: date.timeIntervalSince1970, pictures: pictures)
+            viewModel.delegate?.updateTableView()
+            
+            let storyboard = UIStoryboard(name: "UploadPicturesViewController", bundle: nil)
+            guard let uploadPicturesViewController = storyboard.instantiateInitialViewController() as? UploadPicturesViewController else { return }
+            uploadPicturesViewController.viewModel = self.viewModel
+            uploadPicturesViewController.viewModel.trip = trip
+            uploadPicturesViewController.modalPresentationStyle = .fullScreen
+            self.present(uploadPicturesViewController, animated: true, completion: nil)
+            
+        } else {
+            let alertController = UIAlertController(title: "Required fields left empty", message: "Please fill out all fields before moving forward", preferredStyle: .alert)
+            let confirmAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(confirmAction)
+            present(alertController, animated: true, completion: nil)
+        }
+    }
+}
+
+extension NewTripViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0
     }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = UICollectionViewCell()
+        return cell
+    }
 }

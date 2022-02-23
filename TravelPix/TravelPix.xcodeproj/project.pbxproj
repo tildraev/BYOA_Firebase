@@ -16,13 +16,15 @@
 		D2C39CC427C59F32004B593E /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C39CC327C59F32004B593E /* HomePageViewModel.swift */; };
 		D2C39CCA27C5A67B004B593E /* NewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C39CC927C5A67B004B593E /* NewTripViewController.swift */; };
 		D2C39CCC27C5A688004B593E /* ViewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C39CCB27C5A688004B593E /* ViewTripViewController.swift */; };
-		D2C39CCE27C5A6AC004B593E /* NewTripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C39CCD27C5A6AC004B593E /* NewTripViewModel.swift */; };
-		D2C39CD227C5A6CD004B593E /* ViewTripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C39CD127C5A6CD004B593E /* ViewTripViewModel.swift */; };
 		D2C39CD427C5A741004B593E /* NewTrip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2C39CD327C5A741004B593E /* NewTrip.storyboard */; };
 		D2C39CD627C5A798004B593E /* ViewTrip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2C39CD527C5A798004B593E /* ViewTrip.storyboard */; };
 		D2C39CD827C5AC1F004B593E /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C39CD727C5AC1F004B593E /* FirebaseController.swift */; };
 		D2C39CDF27C5B305004B593E /* ResetPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2C39CDD27C5B305004B593E /* ResetPassword.storyboard */; };
 		D2C39CE127C5B319004B593E /* CreateAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2C39CE027C5B319004B593E /* CreateAccount.storyboard */; };
+		D2C39CE427C6C365004B593E /* UploadPicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C39CE327C6C365004B593E /* UploadPicturesViewController.swift */; };
+		D2C39CE627C6C536004B593E /* UploadPicturesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2C39CE527C6C536004B593E /* UploadPicturesViewController.storyboard */; };
+		D2C39CEB27C6CF31004B593E /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C39CEA27C6CF31004B593E /* CollectionViewCell.swift */; };
+		D2C39CF127C6DFBC004B593E /* FirebaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C39CF027C6DFBC004B593E /* FirebaseImageView.swift */; };
 		D2EDE76C27C5791F00F8B970 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDE76B27C5791F00F8B970 /* AppDelegate.swift */; };
 		D2EDE76E27C5791F00F8B970 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDE76D27C5791F00F8B970 /* SceneDelegate.swift */; };
 		D2EDE77327C5791F00F8B970 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2EDE77127C5791F00F8B970 /* Main.storyboard */; };
@@ -48,13 +50,15 @@
 		D2C39CC327C59F32004B593E /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
 		D2C39CC927C5A67B004B593E /* NewTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripViewController.swift; sourceTree = "<group>"; };
 		D2C39CCB27C5A688004B593E /* ViewTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTripViewController.swift; sourceTree = "<group>"; };
-		D2C39CCD27C5A6AC004B593E /* NewTripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripViewModel.swift; sourceTree = "<group>"; };
-		D2C39CD127C5A6CD004B593E /* ViewTripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTripViewModel.swift; sourceTree = "<group>"; };
 		D2C39CD327C5A741004B593E /* NewTrip.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewTrip.storyboard; sourceTree = "<group>"; };
 		D2C39CD527C5A798004B593E /* ViewTrip.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewTrip.storyboard; sourceTree = "<group>"; };
 		D2C39CD727C5AC1F004B593E /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		D2C39CDE27C5B305004B593E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = TravelPix/Base.lproj/ResetPassword.storyboard; sourceTree = "<group>"; };
 		D2C39CE027C5B319004B593E /* CreateAccount.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateAccount.storyboard; sourceTree = "<group>"; };
+		D2C39CE327C6C365004B593E /* UploadPicturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPicturesViewController.swift; sourceTree = "<group>"; };
+		D2C39CE527C6C536004B593E /* UploadPicturesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UploadPicturesViewController.storyboard; sourceTree = "<group>"; };
+		D2C39CEA27C6CF31004B593E /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		D2C39CF027C6DFBC004B593E /* FirebaseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseImageView.swift; sourceTree = "<group>"; };
 		D2EDE76827C5791F00F8B970 /* TravelPix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelPix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2EDE76B27C5791F00F8B970 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2EDE76D27C5791F00F8B970 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 		D2C39CB127C5869A004B593E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D2C39CE927C6CF22004B593E /* Cell */,
+				D2C39CE227C6C326004B593E /* Upload Pictures */,
 				D2C39CDA27C5B2DE004B593E /* Create Account */,
 				D2C39CDB27C5B2E6004B593E /* Reset Password */,
 				D2C39CDC27C5B2EE004B593E /* Login */,
@@ -118,7 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				D2C39CC927C5A67B004B593E /* NewTripViewController.swift */,
-				D2C39CCD27C5A6AC004B593E /* NewTripViewModel.swift */,
 				D2C39CD327C5A741004B593E /* NewTrip.storyboard */,
 			);
 			path = "New Trip";
@@ -128,7 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				D2C39CCB27C5A688004B593E /* ViewTripViewController.swift */,
-				D2C39CD127C5A6CD004B593E /* ViewTripViewModel.swift */,
 				D2C39CD527C5A798004B593E /* ViewTrip.storyboard */,
 			);
 			path = "View Trip";
@@ -138,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				D2C39CD727C5AC1F004B593E /* FirebaseController.swift */,
+				D2C39CF027C6DFBC004B593E /* FirebaseImageView.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -167,6 +172,23 @@
 				D2C39CB727C58759004B593E /* LoginViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		D2C39CE227C6C326004B593E /* Upload Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				D2C39CE327C6C365004B593E /* UploadPicturesViewController.swift */,
+				D2C39CE527C6C536004B593E /* UploadPicturesViewController.storyboard */,
+			);
+			path = "Upload Pictures";
+			sourceTree = "<group>";
+		};
+		D2C39CE927C6CF22004B593E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D2C39CEA27C6CF31004B593E /* CollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		D2EDE75F27C5791F00F8B970 = {
@@ -282,6 +304,7 @@
 				D2EDE77827C5792100F8B970 /* LaunchScreen.storyboard in Resources */,
 				D2EDE78027C579AB00F8B970 /* GoogleService-Info.plist in Resources */,
 				D2C39CD427C5A741004B593E /* NewTrip.storyboard in Resources */,
+				D2C39CE627C6C536004B593E /* UploadPicturesViewController.storyboard in Resources */,
 				D2C39CC127C59A0B004B593E /* HomePage.storyboard in Resources */,
 				D2EDE77527C5792100F8B970 /* Assets.xcassets in Resources */,
 				D2C39CDF27C5B305004B593E /* ResetPassword.storyboard in Resources */,
@@ -298,17 +321,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2C39CD227C5A6CD004B593E /* ViewTripViewModel.swift in Sources */,
 				D2C39CBA27C58C67004B593E /* Trip.swift in Sources */,
 				D2C39CBC27C597E8004B593E /* HomePageViewController.swift in Sources */,
 				D2C39CCA27C5A67B004B593E /* NewTripViewController.swift in Sources */,
 				D2C39CB427C58742004B593E /* CreateAccountViewController.swift in Sources */,
+				D2C39CE427C6C365004B593E /* UploadPicturesViewController.swift in Sources */,
 				D2EDE76C27C5791F00F8B970 /* AppDelegate.swift in Sources */,
 				D2C39CC427C59F32004B593E /* HomePageViewModel.swift in Sources */,
 				D2EDE76E27C5791F00F8B970 /* SceneDelegate.swift in Sources */,
+				D2C39CEB27C6CF31004B593E /* CollectionViewCell.swift in Sources */,
+				D2C39CF127C6DFBC004B593E /* FirebaseImageView.swift in Sources */,
 				D2C39CB827C58759004B593E /* LoginViewController.swift in Sources */,
 				D2C39CCC27C5A688004B593E /* ViewTripViewController.swift in Sources */,
-				D2C39CCE27C5A6AC004B593E /* NewTripViewModel.swift in Sources */,
 				D2C39CB627C5874D004B593E /* ResetPasswordViewController.swift in Sources */,
 				D2C39CD827C5AC1F004B593E /* FirebaseController.swift in Sources */,
 			);

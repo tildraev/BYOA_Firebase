@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import UIKit
 
 class FirebaseController {
     let ref = Database.database().reference()
@@ -40,9 +41,9 @@ class FirebaseController {
         }
     }
     
-    func uploadPicture(userID: String) {
-        let imageRef = storageRef.child(userID)
-        
+    func uploadImage(userID: String, imagePath: URL, tripName: String) {
+        let imageRef = storageRef.child(userID).child(tripName).child(imagePath.lastPathComponent)
+        let uploadTask = imageRef.putFile(from: imagePath)
     }
 }
 
