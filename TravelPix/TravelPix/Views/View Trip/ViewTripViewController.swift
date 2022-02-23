@@ -19,6 +19,8 @@ class ViewTripViewController: UIViewController {
         super.viewDidLoad()
         pictureCollectionView.dataSource = self
         pictureCollectionView.delegate = self
+        tripNameLabel.text = viewModel.trip?.name
+        tripDescriptionTextView.text = viewModel.trip?.description
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {

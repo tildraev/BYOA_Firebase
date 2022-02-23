@@ -68,7 +68,7 @@ extension UploadPicturesViewController: UICollectionViewDelegate, UICollectionVi
            let imageURL = URL(string: imagePath){
             
             DispatchQueue.main.async {
-                cell.imageCell.setImage(userID: userID, imagePath: imageURL, tripName: tripName)                
+                cell.imageCell.setImage(userID: userID, imagePath: imageURL, tripName: tripName)    
             }
         }
     

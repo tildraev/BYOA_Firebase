@@ -41,5 +41,7 @@ class LoginViewController: UIViewController {
                 }
             }
         }
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
 }

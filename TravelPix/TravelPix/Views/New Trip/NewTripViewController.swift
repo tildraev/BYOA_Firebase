@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewTripViewController: UIViewController, UINavigationControllerDelegate {
+class NewTripViewController: UIViewController, UINavigationControllerDelegate, UITextViewDelegate {
 
     var viewModel: HomePageViewModel!
     
@@ -17,6 +17,7 @@ class NewTripViewController: UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tripDescriptionTextView.delegate = self
     }
 
     @IBAction func saveTripButtonTapped(_ sender: Any) {
@@ -42,6 +43,15 @@ class NewTripViewController: UIViewController, UINavigationControllerDelegate {
             present(alertController, animated: true, completion: nil)
         }
     }
+    
+    @IBAction func nameTextFieldDidEndEditing(_ sender: UITextField) {
+        sender.resignFirstResponder()
+    }
+    
+    @IBAction func saveDescriptionButtonTapped(_ sender: Any) {
+        tripDescriptionTextView.resignFirstResponder()
+    }
+    
 }
 
 extension NewTripViewController: UICollectionViewDelegate, UICollectionViewDataSource {

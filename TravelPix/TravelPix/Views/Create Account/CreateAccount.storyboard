@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iBT-7y-kVh">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -11,17 +12,17 @@
             <objects>
                 <viewController id="iBT-7y-kVh" customClass="CreateAccountViewController" customModule="TravelPix" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a70-bu-veo">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9d7-WL-Ca8">
-                                <rect key="frame" x="41.5" y="316" width="331" height="210.5"/>
+                                <rect key="frame" x="41.5" y="336" width="331" height="224"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TP9-IW-DfX">
-                                        <rect key="frame" x="0.0" y="0.0" width="331" height="42"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="331" height="45"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create an account..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTi-v2-L5j">
-                                                <rect key="frame" x="102.5" y="7" width="126" height="27.5"/>
+                                                <rect key="frame" x="102.5" y="8.5" width="126" height="27.5"/>
                                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -34,22 +35,31 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="YBb-4b-rU4">
-                                        <rect key="frame" x="10" y="62" width="311" height="128.5"/>
+                                        <rect key="frame" x="10" y="65" width="311" height="139"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter email address..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hAr-XB-i5Q">
-                                                <rect key="frame" x="0.0" y="0.0" width="311" height="39.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="311" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textFieldDidEndEditing:" destination="iBT-7y-kVh" eventType="editingDidEndOnExit" id="4cF-0A-xOm"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hAy-nk-aJy">
-                                                <rect key="frame" x="0.0" y="44.5" width="311" height="39.5"/>
+                                                <rect key="frame" x="0.0" y="48" width="311" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <action selector="textFieldDidEndEditing:" destination="iBT-7y-kVh" eventType="editingDidEndOnExit" id="gIv-ic-Z8A"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="confirm password..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Gt-Ry-ckO">
-                                                <rect key="frame" x="0.0" y="89" width="311" height="39.5"/>
+                                                <rect key="frame" x="0.0" y="96" width="311" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <action selector="textFieldDidEndEditing:" destination="iBT-7y-kVh" eventType="editingDidEndOnExit" id="FGt-Kf-kdT"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -68,7 +78,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDw-I1-ZAW">
-                                <rect key="frame" x="52" y="554" width="310.5" height="33.5"/>
+                                <rect key="frame" x="52" y="587.5" width="310.5" height="33.5"/>
                                 <color key="tintColor" red="0.1328358352" green="0.15171557660000001" blue="0.1978113651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray">

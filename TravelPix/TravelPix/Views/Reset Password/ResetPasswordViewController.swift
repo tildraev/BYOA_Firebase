@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class ResetPasswordViewController: UIViewController {
+class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
 
     
     @IBOutlet weak var emailAddressTextField: UITextField!
@@ -27,9 +27,13 @@ class ResetPasswordViewController: UIViewController {
                     alertController.addAction(confirmAction)
                     self.present(alertController, animated: true, completion: nil)
                 } else {
-                    self.navigationController?.popViewController(animated: true)                    
+                    self.navigationController?.popViewController(animated: true)
                 }
             }
         }
+    }
+    
+    @IBAction func emailTextFieldDoneEditing(_ sender: UITextField) {
+        sender.resignFirstResponder()
     }
 }

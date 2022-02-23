@@ -36,13 +36,14 @@ class CreateAccountViewController: UIViewController {
                 
             } else {
                 //Alert that passwords do not match
-                let alertController = UIAlertController(title: "Password do not match", message: "Please re-enter your password", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Passwords do not match", message: "Please re-enter your password", preferredStyle: .alert)
                 let confirmAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alertController.addAction(confirmAction)
                 present(alertController, animated: true, completion: nil)
             }
         }
-        
-        self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func textFieldDidEndEditing(_ sender: UITextField) {
+        sender.resignFirstResponder()
     }
 }
