@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2179D3B27C8214A00F60168 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D2179D3A27C8214A00F60168 /* FirebaseFirestore */; };
+		D2179D3D27C8214A00F60168 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = D2179D3C27C8214A00F60168 /* FirebaseFirestoreSwift-Beta */; };
 		D2C39CB427C58742004B593E /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C39CB327C58742004B593E /* CreateAccountViewController.swift */; };
 		D2C39CB627C5874D004B593E /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C39CB527C5874D004B593E /* ResetPasswordViewController.swift */; };
 		D2C39CB827C58759004B593E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C39CB727C58759004B593E /* LoginViewController.swift */; };
@@ -79,6 +81,8 @@
 				D2EDE78927C57A1800F8B970 /* FirebaseDatabaseSwift-Beta in Frameworks */,
 				D2EDE78B27C57A1800F8B970 /* FirebaseStorage in Frameworks */,
 				D2EDE78D27C57A1800F8B970 /* FirebaseStorageCombine-Community in Frameworks */,
+				D2179D3B27C8214A00F60168 /* FirebaseFirestore in Frameworks */,
+				D2179D3D27C8214A00F60168 /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				D2EDE78F27C57A1800F8B970 /* FirebaseStorageSwift-Beta in Frameworks */,
 				D2EDE78527C57A1800F8B970 /* FirebaseAuthCombine-Community in Frameworks */,
 			);
@@ -87,6 +91,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D2179D3927C8214A00F60168 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D2C39CB027C58694004B593E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +208,7 @@
 				D2EDE77F27C579AB00F8B970 /* GoogleService-Info.plist */,
 				D2EDE76A27C5791F00F8B970 /* TravelPix */,
 				D2EDE76927C5791F00F8B970 /* Products */,
+				D2179D3927C8214A00F60168 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -255,6 +267,8 @@
 				D2EDE78A27C57A1800F8B970 /* FirebaseStorage */,
 				D2EDE78C27C57A1800F8B970 /* FirebaseStorageCombine-Community */,
 				D2EDE78E27C57A1800F8B970 /* FirebaseStorageSwift-Beta */,
+				D2179D3A27C8214A00F60168 /* FirebaseFirestore */,
+				D2179D3C27C8214A00F60168 /* FirebaseFirestoreSwift-Beta */,
 			);
 			productName = TravelPix;
 			productReference = D2EDE76827C5791F00F8B970 /* TravelPix.app */;
@@ -575,6 +589,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D2179D3A27C8214A00F60168 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2EDE78127C57A1800F8B970 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		D2179D3C27C8214A00F60168 /* FirebaseFirestoreSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2EDE78127C57A1800F8B970 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreSwift-Beta";
+		};
 		D2EDE78227C57A1800F8B970 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D2EDE78127C57A1800F8B970 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

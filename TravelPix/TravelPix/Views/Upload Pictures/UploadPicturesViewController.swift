@@ -18,6 +18,7 @@ class UploadPicturesViewController: UIViewController, UIImagePickerControllerDel
         super.viewDidLoad()
         imageCollectionView.dataSource = self
         imageCollectionView.delegate = self
+        viewModel.delegate = self
         
         self.imageCollectionView.alwaysBounceVertical = true
         self.imageCollectionView.refreshControl = self.refresher
@@ -46,6 +47,10 @@ class UploadPicturesViewController: UIViewController, UIImagePickerControllerDel
             guard let trip = viewModel.trip else { return }
             viewModel.updateTrip(trip: trip, name: nil, description: nil, date: nil, pictures: trip.pictures)
         }
+        if let newImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            viewModel.pictures.append(newImage)
+        }
+        
         self.imageCollectionView.reloadData()
     }
     
@@ -53,6 +58,7 @@ class UploadPicturesViewController: UIViewController, UIImagePickerControllerDel
         let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
         let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController
         let homePageViewController = navigationController?.viewControllers[0] as? HomePageViewController
+        viewModel.pictures = []
         homePageViewController?.viewModel = viewModel
         navigationController?.modalPresentationStyle = .fullScreen
         self.present(navigationController!, animated: true, completion: nil)
@@ -69,21 +75,31 @@ class UploadPicturesViewController: UIViewController, UIImagePickerControllerDel
 
 extension UploadPicturesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.trip?.pictures.count ?? 0
+//        return viewModel.trip?.pictures.count ?? 0
+        return viewModel.pictures.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "picCell", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
     
-        if let userID = viewModel.userID,
-           let imagePath = viewModel.trip?.pictures[indexPath.row],
-           let tripName = viewModel.trip?.name,
-           let imageURL = URL(string: imagePath){
-            
-            DispatchQueue.main.async {
-                cell.imageCell.setImage(userID: userID, imagePath: imageURL, tripName: tripName)    
-            }
-        }
+//        if let userID = viewModel.userID,
+//           let imagePath = viewModel.trip?.pictures[indexPath.row],
+//           let tripName = viewModel.trip?.name,
+//           let imageURL = URL(string: imagePath){
+//
+//            DispatchQueue.main.async {
+//                cell.imageCell.setImage(userID: userID, imagePath: imageURL, tripName: tripName)
+//            }
+//        }
+        
+        cell.imageCell.image = viewModel.pictures[indexPath.row]
+        
         return cell
+    }
+}
+
+extension UploadPicturesViewController: HomePageViewModelDelegate {
+    func updateTableView() {
+        imageCollectionView.reloadData()
     }
 }

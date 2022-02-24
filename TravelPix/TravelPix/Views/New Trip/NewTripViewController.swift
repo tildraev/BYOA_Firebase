@@ -18,6 +18,33 @@ class NewTripViewController: UIViewController, UINavigationControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         tripDescriptionTextView.delegate = self
+        addDoneButtonOnKeyboard()
+    }
+    
+    func addDoneButtonOnKeyboard()
+    {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        doneToolbar.barStyle = UIBarStyle.black
+        doneToolbar.isTranslucent = true
+
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.doneButtonAction))
+
+        let items = NSMutableArray()
+        items.add(flexSpace)
+        items.add(done)
+
+        doneToolbar.items = items as? [UIBarButtonItem]
+        doneToolbar.sizeToFit()
+
+        self.tripDescriptionTextView.inputAccessoryView = doneToolbar
+        self.tripNameTextField.inputAccessoryView = doneToolbar
+    }
+
+    @objc func doneButtonAction()
+    {
+        self.tripDescriptionTextView.resignFirstResponder()
+        self.tripNameTextField.resignFirstResponder()
     }
 
     @IBAction func saveTripButtonTapped(_ sender: Any) {
@@ -47,11 +74,6 @@ class NewTripViewController: UIViewController, UINavigationControllerDelegate, U
     @IBAction func nameTextFieldDidEndEditing(_ sender: UITextField) {
         sender.resignFirstResponder()
     }
-    
-    @IBAction func saveDescriptionButtonTapped(_ sender: Any) {
-        tripDescriptionTextView.resignFirstResponder()
-    }
-    
 }
 
 extension NewTripViewController: UICollectionViewDelegate, UICollectionViewDataSource {

@@ -10,13 +10,14 @@ import UIKit
 import Firebase
 import AVFoundation
 
-protocol HomePageViewModelDelegate: HomePageViewController {
+protocol HomePageViewModelDelegate: AnyObject {
     func updateTableView()
 }
 
 class HomePageViewModel {
     var tripDiary: [Trip]?
     var trip: Trip?
+    var pictures: [UIImage] = []
     var userID: String?
     weak var delegate: HomePageViewModelDelegate?
     
@@ -84,6 +85,14 @@ class HomePageViewModel {
     
     func uploadPicture(imagePath: URL, tripName: String) {
         guard let userID = userID else { return }
-        FirebaseController().uploadImage(userID: userID, imagePath: imagePath, tripName: tripName)
+        FirebaseController().uploadImage(userID: userID, imagePath: imagePath, tripName: tripName, completion: { result in
+            switch result {
+                
+            case .success(_):
+                self.delegate?.updateTableView()
+            case .failure(_):
+                print("failure")
+            }
+        })
     }
 }

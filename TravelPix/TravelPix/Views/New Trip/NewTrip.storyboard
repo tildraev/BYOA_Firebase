@@ -64,14 +64,6 @@
                                     <action selector="saveTripButtonTapped:" destination="Jjj-DL-pAx" eventType="touchUpInside" id="Yi8-uz-6Hn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkc-ig-cRX">
-                                <rect key="frame" x="179" y="527" width="56" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
-                                <connections>
-                                    <action selector="saveDescriptionButtonTapped:" destination="Jjj-DL-pAx" eventType="touchUpInside" id="Njg-WT-HBr"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IyT-B6-zJH"/>
                         <color key="backgroundColor" red="0.30209305879999998" green="0.26122978330000002" blue="0.4013305902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -79,9 +71,7 @@
                             <constraint firstItem="4jb-Pw-1YD" firstAttribute="centerX" secondItem="ldQ-5D-Wgb" secondAttribute="centerX" id="0Yk-fh-y7R"/>
                             <constraint firstItem="X0X-0U-eqt" firstAttribute="centerX" secondItem="ldQ-5D-Wgb" secondAttribute="centerX" id="1p4-yf-cv4"/>
                             <constraint firstItem="X0X-0U-eqt" firstAttribute="top" secondItem="IyT-B6-zJH" secondAttribute="top" constant="5" id="9iI-sn-0Gr"/>
-                            <constraint firstItem="fkc-ig-cRX" firstAttribute="top" secondItem="VsA-38-7gZ" secondAttribute="bottom" constant="20" id="9v5-y8-b22"/>
                             <constraint firstItem="IyT-B6-zJH" firstAttribute="trailing" secondItem="IOZ-zB-Tqt" secondAttribute="trailing" constant="5" id="AUX-of-0tq"/>
-                            <constraint firstItem="fkc-ig-cRX" firstAttribute="centerX" secondItem="ldQ-5D-Wgb" secondAttribute="centerX" id="Da7-L8-Qe5"/>
                             <constraint firstItem="ruu-4B-POE" firstAttribute="centerX" secondItem="ldQ-5D-Wgb" secondAttribute="centerX" id="ERO-Fn-Lf9"/>
                             <constraint firstItem="IyT-B6-zJH" firstAttribute="trailing" secondItem="X0X-0U-eqt" secondAttribute="trailing" constant="5" id="ISx-t5-DHC"/>
                             <constraint firstItem="mGh-Ww-OcV" firstAttribute="top" secondItem="4jb-Pw-1YD" secondAttribute="bottom" constant="20" id="ODq-wL-5NQ"/>
