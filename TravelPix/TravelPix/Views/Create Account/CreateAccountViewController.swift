@@ -25,15 +25,24 @@ class CreateAccountViewController: UIViewController {
            let confirmPassword = confirmPasswordTextField.text, !confirmPassword.isEmpty {
             if password == confirmPassword {
                 Auth.auth().createUser(withEmail: emailAddress, password: confirmPassword) { result, error in
+                    switch error {
+                    case .none:
+                        print("something else")
+                    case .some(let error):
+                        let alertController = UIAlertController(title: "Error creating account", message: error.localizedDescription, preferredStyle: .alert)
+                        let confirmAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                        alertController.addAction(confirmAction)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                    
                     switch result {
-                        
                     case .none:
                         print("hi")
-                    case .some(_):
-                        print("bye")
+                    case .some(let result):
+                        print(result)
+                        self.dismiss(animated: true, completion: nil)
                     }
                 }
-                self.dismiss(animated: true, completion: nil)
                 
             } else {
                 //Alert that passwords do not match

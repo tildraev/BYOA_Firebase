@@ -8,6 +8,7 @@
 import UIKit
 
 class ViewTripViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
 
     var viewModel: HomePageViewModel!
     var imagePicker = UIImagePickerController()
@@ -20,10 +21,12 @@ class ViewTripViewController: UIViewController, UIImagePickerControllerDelegate,
         super.viewDidLoad()
         pictureCollectionView.dataSource = self
         pictureCollectionView.delegate = self
+        viewModel.delegate = self
         tripNameLabel.text = viewModel.trip?.name
         tripDescriptionTextView.text = viewModel.trip?.description
         addDoneButtonOnKeyboard()
         getPictures()
+        pictureCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,26 +60,8 @@ class ViewTripViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func getPictures() {
-        guard let viewModel = viewModel else { return }
         guard let trip = viewModel.trip else { return }
-        let pictures = trip.pictures
-        
-        
-        for imageURLString in pictures {
-            guard let imageURL = URL(string: imageURLString) else { return }
-            FirebaseController().getImage(userID: viewModel.userID ?? "", imagePath: imageURL, tripName: trip.name) { result in
-                switch result {
-                    
-                case .success(let decodedImage):
-                    viewModel.pictures.append(decodedImage)
-                    DispatchQueue.main.async {
-                        self.pictureCollectionView.reloadData()
-                    }
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
+        viewModel.getPicturesFrom(trip: trip)
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -99,7 +84,6 @@ class ViewTripViewController: UIViewController, UIImagePickerControllerDelegate,
             imagePicker.delegate = self
             imagePicker.sourceType = .savedPhotosAlbum
             imagePicker.allowsEditing = false
-            
             present(imagePicker, animated: true, completion: nil)
         }
     }
@@ -128,19 +112,34 @@ extension ViewTripViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "picCell", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
-    
-//        if let userID = viewModel.userID,
-//           let imagePath = viewModel.trip?.pictures[indexPath.row],
-//           let tripName = viewModel.trip?.name,
-//           let imageURL = URL(string: imagePath){
-//
-//            DispatchQueue.main.async {
-//                cell.imageCell.setImage(userID: userID, imagePath: imageURL, tripName: tripName)
-//            }
-//
-//        }
-        
-        cell.imageCell.image = viewModel.pictures[indexPath.row]
+        let imageToSend = viewModel.pictures[indexPath.row]
+        cell.imageCell.image = imageToSend
+        cell.isUserInteractionEnabled = true
+        cell.contentMode = .scaleAspectFit
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "ImageDetail", bundle: nil)
+        //let imageDetailViewController = storyboard.instantiateInitialViewController() as? ImageDetailViewController
+        let imageDetailViewController = storyboard.instantiateViewController(withIdentifier: "ImageDetailViewController") as? ImageDetailViewController
+        let collectionViewCell = pictureCollectionView.cellForItem(at: indexPath) as? CollectionViewCell
+        imageDetailViewController?.imageToView = collectionViewCell?.imageCell.image
+        
+        imageDetailViewController?.modalPresentationStyle = .popover
+        self.present(imageDetailViewController!, animated: true, completion: nil)
+    }
+}
+
+extension ViewTripViewController: HomePageViewModelDelegate {
+    func updateTableView() {
+        pictureCollectionView.reloadData()
+    }
+}
+
+extension ViewTripViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let widthToSet = (collectionView.contentSize.width/2)-10
+        return CGSize(width: widthToSet, height: widthToSet)
     }
 }

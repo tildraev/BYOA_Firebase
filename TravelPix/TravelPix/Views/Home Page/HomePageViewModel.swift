@@ -83,6 +83,25 @@ class HomePageViewModel {
         }
     }
     
+    func getPicturesFrom(trip: Trip) {
+        let pictures = trip.pictures
+        for imageURLString in pictures {
+            guard let imageURL = URL(string: imageURLString) else { return }
+            FirebaseController().getImage(userID: userID ?? "", imagePath: imageURL, tripName: trip.name) { result in
+                switch result {
+                    
+                case .success(let decodedImage):
+                    self.pictures.append(decodedImage)
+                    if self.pictures.count == pictures.count {
+                        self.delegate?.updateTableView()
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
+    
     func uploadPicture(imagePath: URL, tripName: String) {
         guard let userID = userID else { return }
         FirebaseController().uploadImage(userID: userID, imagePath: imagePath, tripName: tripName, completion: { result in

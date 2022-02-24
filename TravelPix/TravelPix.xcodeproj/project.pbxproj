@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D2179D3B27C8214A00F60168 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D2179D3A27C8214A00F60168 /* FirebaseFirestore */; };
 		D2179D3D27C8214A00F60168 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = D2179D3C27C8214A00F60168 /* FirebaseFirestoreSwift-Beta */; };
+		D2179D4027C8311600F60168 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2179D3F27C8311600F60168 /* ImageDetailViewController.swift */; };
+		D2179D4427C83AB300F60168 /* ImageDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2179D4327C83AB300F60168 /* ImageDetail.storyboard */; };
 		D2C39CB427C58742004B593E /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C39CB327C58742004B593E /* CreateAccountViewController.swift */; };
 		D2C39CB627C5874D004B593E /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C39CB527C5874D004B593E /* ResetPasswordViewController.swift */; };
 		D2C39CB827C58759004B593E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C39CB727C58759004B593E /* LoginViewController.swift */; };
@@ -43,6 +45,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D2179D3F27C8311600F60168 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
+		D2179D4327C83AB300F60168 /* ImageDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ImageDetail.storyboard; sourceTree = "<group>"; };
 		D2C39CB327C58742004B593E /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		D2C39CB527C5874D004B593E /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		D2C39CB727C58759004B593E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +100,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D2179D3E27C830F600F60168 /* Image Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D2179D3F27C8311600F60168 /* ImageDetailViewController.swift */,
+				D2179D4327C83AB300F60168 /* ImageDetail.storyboard */,
+			);
+			path = "Image Detail";
 			sourceTree = "<group>";
 		};
 		D2C39CB027C58694004B593E /* Model */ = {
@@ -223,6 +236,7 @@
 		D2EDE76A27C5791F00F8B970 /* TravelPix */ = {
 			isa = PBXGroup;
 			children = (
+				D2179D3E27C830F600F60168 /* Image Detail */,
 				D2C39CB027C58694004B593E /* Model */,
 				D2C39CD927C5AC3C004B593E /* Firebase */,
 				D2C39CB127C5869A004B593E /* Views */,
@@ -325,6 +339,7 @@
 				D2C39CD627C5A798004B593E /* ViewTrip.storyboard in Resources */,
 				D2EDE77327C5791F00F8B970 /* Main.storyboard in Resources */,
 				D2C39CE127C5B319004B593E /* CreateAccount.storyboard in Resources */,
+				D2179D4427C83AB300F60168 /* ImageDetail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +354,7 @@
 				D2C39CBC27C597E8004B593E /* HomePageViewController.swift in Sources */,
 				D2C39CCA27C5A67B004B593E /* NewTripViewController.swift in Sources */,
 				D2C39CB427C58742004B593E /* CreateAccountViewController.swift in Sources */,
+				D2179D4027C8311600F60168 /* ImageDetailViewController.swift in Sources */,
 				D2C39CE427C6C365004B593E /* UploadPicturesViewController.swift in Sources */,
 				D2EDE76C27C5791F00F8B970 /* AppDelegate.swift in Sources */,
 				D2C39CC427C59F32004B593E /* HomePageViewModel.swift in Sources */,
