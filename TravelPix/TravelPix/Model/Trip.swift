@@ -43,14 +43,18 @@ class Trip {
         guard let name = dictionary["name"] as? String,
               let description = dictionary["description"] as? String,
               let date = dictionary["date"] as? Double,
-              let uuid = dictionary["uuid"] as? String,
-              let pictures = dictionary["pictures"] as? [String] else { return nil }
+              let uuid = dictionary["uuid"] as? String else { return nil }
         
         self.name = name
         self.description = description
         self.date = date
         self.uuid = uuid
-        self.pictures = pictures
+        
+        if let pictures = dictionary["pictures"] as? [String] {
+            self.pictures = pictures
+        } else {
+            self.pictures = []
+        }
     }
 }
 

@@ -10,6 +10,7 @@ import UIKit
 class UploadPicturesViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var viewModel: HomePageViewModel!
     var imagePicker = UIImagePickerController()
+    private let refresher = UIRefreshControl()
     
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
@@ -18,7 +19,11 @@ class UploadPicturesViewController: UIViewController, UIImagePickerControllerDel
         imageCollectionView.dataSource = self
         imageCollectionView.delegate = self
         
-        // Do any additional setup after loading the view.
+        self.imageCollectionView.alwaysBounceVertical = true
+        self.imageCollectionView.refreshControl = self.refresher
+        self.refresher.tintColor = UIColor.red
+        self.refresher.addTarget(self, action: #selector(loadData), for: .valueChanged)
+        self.imageCollectionView!.addSubview(refresher)
     }
     
     @IBAction func uploadPixButtonTapped(_ sender: Any) {
@@ -52,6 +57,14 @@ class UploadPicturesViewController: UIViewController, UIImagePickerControllerDel
         navigationController?.modalPresentationStyle = .fullScreen
         self.present(navigationController!, animated: true, completion: nil)
     }
+    
+    @objc func loadData() {
+        self.imageCollectionView!.refreshControl?.beginRefreshing()
+        imageCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.imageCollectionView!.refreshControl?.endRefreshing()
+        }
+    }
 }
 
 extension UploadPicturesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -71,7 +84,6 @@ extension UploadPicturesViewController: UICollectionViewDelegate, UICollectionVi
                 cell.imageCell.setImage(userID: userID, imagePath: imageURL, tripName: tripName)    
             }
         }
-    
         return cell
     }
 }

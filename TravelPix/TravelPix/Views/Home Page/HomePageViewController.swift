@@ -21,6 +21,11 @@ class HomePageViewController: UIViewController {
         tripTableView.dataSource = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.getTrips()
+        tripTableView.reloadData()
+    }
+    
     
     @IBAction func signOutButtonTapped(_ sender: Any) {
         do {
@@ -37,7 +42,6 @@ class HomePageViewController: UIViewController {
         if segue.identifier == "toNewTripVC" {
             if let destination = segue.destination as? NewTripViewController {
                 destination.viewModel = viewModel
-                
             }
         } else if segue.identifier == "toViewTripVC" {
             if let destination = segue.destination as? ViewTripViewController {
@@ -65,6 +69,7 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             guard let trip = viewModel.tripDiary?[indexPath.row] else { return }
             viewModel.deleteTrip(trip: trip, userID: viewModel.userID!)
+            viewModel.deletePicsAssociatedWithTrip(trip: trip, userID: viewModel.userID!)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Firebase
+import AVFoundation
 
 protocol HomePageViewModelDelegate: HomePageViewController {
     func updateTableView()
@@ -27,7 +28,15 @@ class HomePageViewModel {
     func createTrip(name: String, description: String, date: Double, pictures: [String]) -> Trip {
         let newTrip = Trip(name: name, description: description, date: date, pictures: pictures)
         tripDiary?.append(newTrip)
-        FirebaseController().save(newTrip, userID: userID!)
+        FirebaseController().save(newTrip, userID: userID!) { result in
+            switch result {
+                
+            case .success(_):
+                self.delegate?.updateTableView()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
         return newTrip
     }
     
@@ -36,13 +45,28 @@ class HomePageViewModel {
         if let description = description { trip.description = description }
         if let date = date { trip.date = date }
         if let pictures = pictures { trip.pictures = pictures }
-        if let userID = userID { FirebaseController().save(trip, userID: userID) }
+        if let userID = userID { FirebaseController().save(trip, userID: userID) { result in
+            switch result {
+                
+            case .success(_):
+                print("true")
+            case .failure(let error):
+                print(error)
+            }
+        } }
     }
     
     func deleteTrip(trip: Trip, userID: String) {
         guard let firstIndex = tripDiary?.firstIndex(where: { $0 == trip }) else { return }
         tripDiary?.remove(at: firstIndex)
         FirebaseController().deleteTrip(trip, userID: userID)
+    }
+    
+    func deletePicsAssociatedWithTrip(trip: Trip, userID: String) {
+        
+        for picture in trip.pictures {
+            FirebaseController().deletePicture(userID: userID, tripName: trip.name, imagePath: picture)
+        }
     }
     
     func getTrips() {

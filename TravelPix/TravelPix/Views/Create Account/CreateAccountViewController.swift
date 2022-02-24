@@ -33,6 +33,7 @@ class CreateAccountViewController: UIViewController {
                         print("bye")
                     }
                 }
+                self.dismiss(animated: true, completion: nil)
                 
             } else {
                 //Alert that passwords do not match
@@ -42,6 +43,10 @@ class CreateAccountViewController: UIViewController {
                 present(alertController, animated: true, completion: nil)
             }
         }
+        
+        
+        
+        //self.dismiss(animated: true, completion: nil)
     }
     @IBAction func textFieldDidEndEditing(_ sender: UITextField) {
         sender.resignFirstResponder()

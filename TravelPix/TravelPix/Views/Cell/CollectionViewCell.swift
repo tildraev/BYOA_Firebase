@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CollectionViewCellDelegate {
+    func updateViews()
+}
+
 class CollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageCell: FirebaseImageView!
@@ -14,5 +18,10 @@ class CollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.imageCell.image = nil
+    }
+}
+
+extension CollectionViewCell: FirebaseImageViewDelegate {
+    func updateViews() {
     }
 }

@@ -13,8 +13,9 @@ class FirebaseController {
     let ref = Database.database().reference()
     let storageRef = Storage.storage().reference()
     
-    func save(_ trip: Trip, userID: String) {
+    func save(_ trip: Trip, userID: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         ref.child(userID).child("trips").child(trip.uuid).setValue(trip.tripData)
+        completion(.success(true))
     }
     
     func deleteTrip(_ trip: Trip, userID: String) {
@@ -43,7 +44,14 @@ class FirebaseController {
     
     func uploadImage(userID: String, imagePath: URL, tripName: String) {
         let imageRef = storageRef.child(userID).child(tripName).child(imagePath.lastPathComponent)
-        let uploadTask = imageRef.putFile(from: imagePath)
+        imageRef.putFile(from: imagePath)
+    }
+    
+    func deletePicture(userID: String, tripName: String, imagePath: String) {
+        let imageRef = storageRef.child(userID).child(tripName).child(imagePath)
+        imageRef.delete { error in
+            print(error)
+        }
     }
 }
 

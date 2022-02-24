@@ -17,6 +17,11 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkUserInfo()
+    }
+    
     @IBAction func signInButtonTapped(_ sender: Any) {
         if let emailAddress = emailTextField.text, !emailAddress.isEmpty,
            let password = passwordTextField.text, !password.isEmpty {
@@ -43,5 +48,18 @@ class LoginViewController: UIViewController {
         }
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
+    }
+    
+    func checkUserInfo() {
+        if Auth.auth().currentUser != nil {
+            let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
+            let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController
+            let homePageViewController = navigationController?.viewControllers[0] as? HomePageViewController
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            let homePageViewModel = HomePageViewModel(userID: uid)
+            homePageViewController?.viewModel = homePageViewModel
+            navigationController?.modalPresentationStyle = .fullScreen
+            self.present(navigationController!, animated: true, completion: nil)
+        }
     }
 }
