@@ -111,7 +111,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="G7L-MW-gC3"/>
                     <connections>
-                        <outlet property="pictureCollectionView" destination="0Iy-EQ-IGf" id="gXY-9l-3wm"/>
+                        <outlet property="imageCollectionView" destination="0Iy-EQ-IGf" id="xSz-tD-Qaq"/>
                         <outlet property="tripDescriptionTextView" destination="wfh-Og-8W2" id="1a7-5G-iE8"/>
                         <outlet property="tripNameLabel" destination="rOC-cf-McA" id="zEX-MO-l14"/>
                     </connections>

@@ -8,25 +8,24 @@
 import UIKit
 
 class ViewTripViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
 
     var viewModel: HomePageViewModel!
     var imagePicker = UIImagePickerController()
     
     @IBOutlet weak var tripNameLabel: UILabel!
     @IBOutlet weak var tripDescriptionTextView: UITextView!
-    @IBOutlet weak var pictureCollectionView: UICollectionView!
+    @IBOutlet weak var imageCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        pictureCollectionView.dataSource = self
-        pictureCollectionView.delegate = self
+        imageCollectionView.dataSource = self
+        imageCollectionView.delegate = self
         viewModel.delegate = self
         tripNameLabel.text = viewModel.trip?.name
         tripDescriptionTextView.text = viewModel.trip?.description
         addDoneButtonOnKeyboard()
         getPictures()
-        pictureCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        imageCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -100,7 +99,7 @@ class ViewTripViewController: UIViewController, UIImagePickerControllerDelegate,
             guard let trip = viewModel.trip else { return }
             viewModel.updateTrip(trip: trip, name: nil, description: tripDescriptionTextView.text, date: nil, pictures: trip.pictures)
         }
-        self.pictureCollectionView.reloadData()
+        self.imageCollectionView.reloadData()
     }
     
 }
@@ -121,19 +120,17 @@ extension ViewTripViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "ImageDetail", bundle: nil)
-        //let imageDetailViewController = storyboard.instantiateInitialViewController() as? ImageDetailViewController
         let imageDetailViewController = storyboard.instantiateViewController(withIdentifier: "ImageDetailViewController") as? ImageDetailViewController
-        let collectionViewCell = pictureCollectionView.cellForItem(at: indexPath) as? CollectionViewCell
+        let collectionViewCell = imageCollectionView.cellForItem(at: indexPath) as? CollectionViewCell
         imageDetailViewController?.imageToView = collectionViewCell?.imageCell.image
-        
         imageDetailViewController?.modalPresentationStyle = .popover
         self.present(imageDetailViewController!, animated: true, completion: nil)
     }
 }
 
 extension ViewTripViewController: HomePageViewModelDelegate {
-    func updateTableView() {
-        pictureCollectionView.reloadData()
+    func updateCollectionView() {
+        imageCollectionView.reloadData()
     }
 }
 

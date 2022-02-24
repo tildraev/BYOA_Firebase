@@ -76,7 +76,7 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension HomePageViewController: HomePageViewModelDelegate {
-    func updateTableView() {
+    func updateCollectionView() {
         DispatchQueue.main.async {
             self.tripTableView.reloadData()
         }

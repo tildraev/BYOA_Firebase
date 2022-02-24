@@ -54,7 +54,7 @@ class NewTripViewController: UIViewController, UINavigationControllerDelegate, U
             let date = datePicker.date
             let pictures = [String]()
             let trip = viewModel.createTrip(name: name, description: description, date: date.timeIntervalSince1970, pictures: pictures)
-            viewModel.delegate?.updateTableView()
+            viewModel.delegate?.updateCollectionView()
             
             let storyboard = UIStoryboard(name: "UploadPicturesViewController", bundle: nil)
             guard let uploadPicturesViewController = storyboard.instantiateInitialViewController() as? UploadPicturesViewController else { return }

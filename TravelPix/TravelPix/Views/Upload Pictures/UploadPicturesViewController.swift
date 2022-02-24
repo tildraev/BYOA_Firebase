@@ -8,6 +8,7 @@
 import UIKit
 
 class UploadPicturesViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     var viewModel: HomePageViewModel!
     var imagePicker = UIImagePickerController()
     private let refresher = UIRefreshControl()
@@ -25,6 +26,7 @@ class UploadPicturesViewController: UIViewController, UIImagePickerControllerDel
         self.refresher.tintColor = UIColor.red
         self.refresher.addTarget(self, action: #selector(loadData), for: .valueChanged)
         self.imageCollectionView!.addSubview(refresher)
+        imageCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
     }
     
     @IBAction func uploadPixButtonTapped(_ sender: Any) {
@@ -75,31 +77,37 @@ class UploadPicturesViewController: UIViewController, UIImagePickerControllerDel
 
 extension UploadPicturesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return viewModel.trip?.pictures.count ?? 0
         return viewModel.pictures.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "picCell", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
-    
-//        if let userID = viewModel.userID,
-//           let imagePath = viewModel.trip?.pictures[indexPath.row],
-//           let tripName = viewModel.trip?.name,
-//           let imageURL = URL(string: imagePath){
-//
-//            DispatchQueue.main.async {
-//                cell.imageCell.setImage(userID: userID, imagePath: imageURL, tripName: tripName)
-//            }
-//        }
-        
+
         cell.imageCell.image = viewModel.pictures[indexPath.row]
-        
+        cell.isUserInteractionEnabled = true
+        cell.contentMode = .scaleAspectFit
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "ImageDetail", bundle: nil)
+        let imageDetailViewController = storyboard.instantiateViewController(withIdentifier: "ImageDetailViewController") as? ImageDetailViewController
+        let collectionViewCell = imageCollectionView.cellForItem(at: indexPath) as? CollectionViewCell
+        imageDetailViewController?.imageToView = collectionViewCell?.imageCell.image
+        imageDetailViewController?.modalPresentationStyle = .popover
+        self.present(imageDetailViewController!, animated: true, completion: nil)
     }
 }
 
 extension UploadPicturesViewController: HomePageViewModelDelegate {
-    func updateTableView() {
+    func updateCollectionView() {
         imageCollectionView.reloadData()
+    }
+}
+
+extension UploadPicturesViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let widthToSet = (collectionView.contentSize.width/2)-10
+        return CGSize(width: widthToSet, height: widthToSet)
     }
 }

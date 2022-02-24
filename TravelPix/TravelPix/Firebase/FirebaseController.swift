@@ -86,7 +86,7 @@ class FirebaseController {
     func deletePicture(userID: String, tripName: String, imagePath: String) {
         let imageRef = storageRef.child(userID).child(tripName).child(imagePath)
         imageRef.delete { error in
-            print(error)
+            print(error?.localizedDescription ?? "")
         }
     }
 }

@@ -11,7 +11,7 @@ import Firebase
 import AVFoundation
 
 protocol HomePageViewModelDelegate: AnyObject {
-    func updateTableView()
+    func updateCollectionView()
 }
 
 class HomePageViewModel {
@@ -33,7 +33,7 @@ class HomePageViewModel {
             switch result {
                 
             case .success(_):
-                self.delegate?.updateTableView()
+                self.delegate?.updateCollectionView()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -76,7 +76,7 @@ class HomePageViewModel {
             switch result {
             case .success(let result):
                 self.tripDiary = result
-                self.delegate?.updateTableView()
+                self.delegate?.updateCollectionView()
             case .failure(let error):
                 print(error.description)
             }
@@ -93,7 +93,7 @@ class HomePageViewModel {
                 case .success(let decodedImage):
                     self.pictures.append(decodedImage)
                     if self.pictures.count == pictures.count {
-                        self.delegate?.updateTableView()
+                        self.delegate?.updateCollectionView()
                     }
                 case .failure(let error):
                     print(error)
@@ -108,7 +108,7 @@ class HomePageViewModel {
             switch result {
                 
             case .success(_):
-                self.delegate?.updateTableView()
+                self.delegate?.updateCollectionView()
             case .failure(_):
                 print("failure")
             }
